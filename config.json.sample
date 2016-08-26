@@ -20,6 +20,10 @@
 		"yes",
 		"nothing"
 	],
+	"whitelist": [
+		"We caught",
+		"pokesniper2"
+	],
 	"scrawl_channels": [
 		"rare_spottings"
 	],
