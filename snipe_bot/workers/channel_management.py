@@ -92,7 +92,7 @@ class ChannelManagement(BaseWorker):
                 return True
 	
     def _is_whitelisted(self, message_content):
-        """ Check if there is blacklisted word in message or not """
+        """ Check if there is whitelisted word in message or not """
 
         whitelist = self.config.get('whitelist', [])
 
