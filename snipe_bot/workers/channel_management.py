@@ -66,15 +66,17 @@ class ChannelManagement(BaseWorker):
 
         # Manage channel rare_spottings only
         if message.channel.name in self.config.get('channels', []):
-            if not (re.match(pattern, message.content) or re.match(reverse_pattern, message.content)) or self._is_blacklisted(message.content):
-                # Log & print out
-                log_message = 'Message has been deleted: {} - Author: {}'.format(
-                    message.content, message.author.name)
-                logger.log(log_message)
-                logging.warning(log_message)
+                if not (re.match(pattern, message.content) or re.match(reverse_pattern, message.content)) or self._is_blacklisted(message.content):
+                    if self._is_whitelisted(message.content):
+                        return False
+                    # Log & print out
+                    log_message = 'Message has been deleted: {} - Author: {}'.format(
+                        message.content, message.author.name)
+                    logger.log(log_message)
+                    logging.warning(log_message)
 
-                # Delete message if not contain lat/long
-                return True
+                    # Delete message 
+                    return True
 
     def _is_blacklisted(self, message_content):
         """ Check if there is blacklisted word in message or not """
@@ -86,5 +88,18 @@ class ChannelManagement(BaseWorker):
             return False
 
         for word in blacklist:
+            if word in message_content:
+                return True
+	
+    def _is_whitelisted(self, message_content):
+        """ Check if there is blacklisted word in message or not """
+
+        whitelist = self.config.get('whitelist', [])
+
+        # If whitelist is empty dont use black list
+        if len(whitelist) == 0:
+            return False
+
+        for word in whitelist:
             if word in message_content:
                 return True
