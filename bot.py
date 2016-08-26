@@ -45,7 +45,7 @@ if __name__ == '__main__':
         async def on_message(message):
             if bot.on_message(message):
                 await client.delete_message(message)
-
+                await client.send_message(message.author, "Wrong Syntax! - POKEMON lat,lng [1-100]")
         bot.run_worker('ChannelManagement')
 
 
