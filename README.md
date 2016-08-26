@@ -11,6 +11,22 @@ or
 ```
 pokemon_name lat,long [IV] [extra info]
 ```
+or
+```
+PokeSniper2 Log Copy-Paste:
+
+Pokemon: aerodactyl
+Latitude, Longitude: -36.860048, 174.774678
+[7:27:59 PM] Looking for a Aerodactyl at -36.860048, 174.774678.
+[7:28:04 PM] Using a RazzBerry.
+[7:28:04 PM] We caught a Aerodactyl.
+ - CP: 1113
+ - IV: 100
+ - Move 1: SteelWingFast
+ - Move 2: HyperBeam
+[7:28:05 PM] We have 130 Pokeballs and 101 berries left. We have 92 Pokemon.
+[7:28:05 PM] Caught everything we could find.
+```
 
 If not, the messages will be deleted automatically.
 
